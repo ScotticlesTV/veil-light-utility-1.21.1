@@ -122,7 +122,8 @@ public class LightManager {
                     pointLightData.getBrightness(),
                     color.red(),color.green(),color.blue(),
                     pos.x(), pos.y(), pos.z(),
-                    pointLightData.getRadius()
+                    pointLightData.getRadius(),
+                    pointLightData.isOcclusionEnabled()
             ));
         }
 
@@ -141,7 +142,8 @@ public class LightManager {
                     pos.x(), pos.y(), pos.z(),
                     orientation.x(), orientation.y(), orientation.z(), orientation.w(),
                     areaLightData.getAngle(),
-                    areaLightData.getDistance()
+                    areaLightData.getDistance(),
+                    areaLightData.isOcclusionEnabled()
             ));
         }
 
@@ -172,26 +174,28 @@ public class LightManager {
 
     // ────────────────── Add Lights ──────────────────
 
-    public static void addPointLight( float brightness,  float r, float g, float b, Vec3d pos, float radius) {
+    public static void addPointLight( float brightness,  float r, float g, float b, Vec3d pos, float radius, boolean occluded) {
 
         PointLightData pointLightData = new PointLightData()
                 .setBrightness(brightness)
                 .setColor(r, g, b)
                 .setPosition(new Vector3d(pos.getX(),pos.getY(),pos.getZ()))
-                .setRadius(radius);
+                .setRadius(radius)
+                .setOcclusionEnabled(false);
 
         VeilRenderSystem.renderer().getLightRenderer().addLight(pointLightData);
         activePointLights.add(pointLightData);
     }
 
-    public static void addAreaLight(float brightness, float r, float g, float b, float width, float height, Vec3d pos, Quaternionfc orientation, float angle, float distance) {
+    public static void addAreaLight(float brightness, float r, float g, float b, float width, float height, Vec3d pos, Quaternionfc orientation, float angle, float distance, boolean occluded) {
 
         AreaLightData areaLightData = new AreaLightData()
                 .setBrightness(brightness)
                 .setColor(r, g, b)
                 .setSize(width, height)
                 .setAngle(angle)
-                .setDistance(distance);
+                .setDistance(distance)
+                .setOcclusionEnabled(occluded);
 
         areaLightData.getPosition().set(pos.getX(),pos.getY(),pos.getZ());
         areaLightData.getOrientation().set(orientation);

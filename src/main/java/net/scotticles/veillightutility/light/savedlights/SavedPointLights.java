@@ -12,6 +12,7 @@ public class SavedPointLights {
     public float r, g ,b;
     public double x, y ,z;
     public float radius;
+    public boolean occluded;
 
     public SavedPointLights() {}
 
@@ -30,10 +31,12 @@ public class SavedPointLights {
 
         this.radius = pointLightData.getRadius();
 
+        this.occluded = pointLightData.isOcclusionEnabled();
+
 
     }
 
-    public SavedPointLights( float brightness, float r, float g, float b, double x, double y, double z, float radius) {
+    public SavedPointLights( float brightness, float r, float g, float b, double x, double y, double z, float radius, boolean occluded ) {
         this.brightness = brightness;
 
         this.r = r;
@@ -45,6 +48,8 @@ public class SavedPointLights {
         this.z = z;
 
         this.radius = radius;
+
+        this.occluded = occluded;
     }
 
     public PointLightData toPointLightData() {
@@ -52,7 +57,8 @@ public class SavedPointLights {
                 .setBrightness(brightness)
                 .setColor(r, g ,b)
                 .setPosition(new Vector3d(x, y ,z))
-                .setRadius(radius);
+                .setRadius(radius)
+                .setOcclusionEnabled(occluded);
 
     }
 }

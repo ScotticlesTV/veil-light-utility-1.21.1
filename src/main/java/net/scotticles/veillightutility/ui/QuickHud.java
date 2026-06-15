@@ -156,7 +156,8 @@ public class QuickHud extends Screen {
                     1.0f,
                     1.0f, 1.0f, 1.0f,
                     playerPos,
-                    15.0f
+                    15.0f,
+                    false
             );
         }
     }
@@ -180,7 +181,8 @@ public class QuickHud extends Screen {
                     playerPos,
                     playerOrientation,
                     angleRadians,
-                    15.0f
+                    15.0f,
+                    false
             );
         }
     }

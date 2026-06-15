@@ -20,6 +20,7 @@ public class SavedAreaLights {
     public float angle;
     public float distance;
     public float o1, o2, o3, o4;
+    public boolean occluded;
 
 
 
@@ -53,9 +54,11 @@ public class SavedAreaLights {
         this.angle = areaLightData.getAngle();
 
         this.distance = areaLightData.getDistance();
+
+        boolean occluded = areaLightData.isOcclusionEnabled();
     }
 
-    public SavedAreaLights(float brightness, float r, float g, float b, float width, float height, double x, double y, double z, float o1, float o2, float o3, float o4, float angle, float distance) {
+    public SavedAreaLights(float brightness, float r, float g, float b, float width, float height, double x, double y, double z, float o1, float o2, float o3, float o4, float angle, float distance, boolean occluded) {
         this.brightness = brightness;
         this.r = r;
         this.g = g;
@@ -71,6 +74,7 @@ public class SavedAreaLights {
         this.o4 = o4;
         this.angle = angle;
         this.distance = distance;
+        this.occluded = occluded;
     }
 
     public AreaLightData toAreaLightData() {
@@ -79,7 +83,8 @@ public class SavedAreaLights {
                 .setColor(r, g, b)
                 .setSize(width, height)
                 .setAngle(angle)
-                .setDistance(distance);
+                .setDistance(distance)
+                .setOcclusionEnabled(occluded);
 
                 areaLightData.getPosition().set(x, y, z);
                 areaLightData.getOrientation().set(new Quaternionf(o1, o2 ,o3, o4).normalize());
