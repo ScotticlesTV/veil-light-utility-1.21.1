@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "veil-light-utility",
+	"version": "${version}",
+	"name": "Veil Light Utility",
+	"description": "Paint your world with light!",
+	"authors": [
+		"Scotticles"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/veil-light-utility/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.scotticles.veillightutility.VeilLightUtility"
+		],
+		"client": [
+			"net.scotticles.veillightutility.VeilLightUtilityClient"
+		],
+		"fabric-datagen": [
+			"net.scotticles.veillightutility.VeilLightUtilityDataGenerator"
+		]
+	},
+	"mixins": [
+		"veil-light-utility.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
