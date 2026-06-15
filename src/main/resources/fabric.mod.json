@@ -3,7 +3,7 @@
 	"id": "veil-light-utility",
 	"version": "${version}",
 	"name": "Veil Light Utility",
-	"description": "Paint your world with light!",
+	"description": "Paint your world with light! VLU saves and loads your lights from the Veil mod upon leaving and rejoining a singleplayer world, also giving a \"Quick Hud\" to allow for quick light management actions.",
 	"authors": [
 		"Scotticles"
 	],

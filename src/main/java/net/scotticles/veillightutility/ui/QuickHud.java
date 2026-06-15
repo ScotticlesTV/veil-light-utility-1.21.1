@@ -214,16 +214,16 @@ public class QuickHud extends Screen {
     }
 
 
-    private void drawButtonCenteredText(DrawContext context, String text, ButtonWidget anchor, int spacing, int color, boolean shadow) {
-        int textwidth = client.textRenderer.getWidth(text);
-        int textHeight = client.textRenderer.fontHeight;
-
-        int centerX = anchor.getX() + anchor.getWidth() / 2;
-        int textX = centerX - textwidth / 2;
-        int textY = anchor.getY() - spacing - textHeight;
-
-        context.drawText(client.textRenderer, text, textX, textY, color, shadow);
-    }
+//    private void drawButtonCenteredText(DrawContext context, String text, ButtonWidget anchor, int spacing, int color, boolean shadow) {
+//        int textwidth = client.textRenderer.getWidth(text);
+//        int textHeight = client.textRenderer.fontHeight;
+//
+//        int centerX = anchor.getX() + anchor.getWidth() / 2;
+//        int textX = centerX - textwidth / 2;
+//        int textY = anchor.getY() - spacing - textHeight;
+//
+//        context.drawText(client.textRenderer, text, textX, textY, color, shadow);
+//    }
 
     private void drawNonCenteredText(DrawContext context, String text, int x, int y, int color, boolean shadow) {
         context.drawText(client.textRenderer, text, x, y, color, shadow);

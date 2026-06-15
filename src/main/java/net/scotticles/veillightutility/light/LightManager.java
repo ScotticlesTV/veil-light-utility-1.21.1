@@ -3,6 +3,7 @@ package net.scotticles.veillightutility.light;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import foundry.veil.api.client.color.Color;
+import foundry.veil.api.client.registry.LightTypeRegistry;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.light.data.AreaLightData;
 import foundry.veil.api.client.render.light.data.DirectionalLightData;
@@ -15,6 +16,7 @@ import net.scotticles.veillightutility.light.savedlights.SavedAreaLights;
 import net.scotticles.veillightutility.light.savedlights.SavedDirectionalLights;
 import net.scotticles.veillightutility.light.savedlights.SavedPointLights;
 import net.scotticles.veillightutility.light.savedlights.WorldLightsSave;
+import net.scotticles.veillightutility.settings.VeilLightUtilityConfig;
 import org.joml.*;
 
 import java.awt.*;
@@ -44,7 +46,10 @@ public class LightManager {
         ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> loadWorldLights());
         ClientPlayConnectionEvents.DISCONNECT.register((handler,client) ->
         {
-//            syncLightsFromVeil();
+            if (VeilLightUtilityConfig.enableTotalSaving) {
+                syncLightsFromVeil();
+            }
+
             saveAllLights();
             activePointLights.clear();
             activeAreaLights.clear();
@@ -175,8 +180,6 @@ public class LightManager {
                 .setPosition(new Vector3d(pos.getX(),pos.getY(),pos.getZ()))
                 .setRadius(radius);
 
-
-
         VeilRenderSystem.renderer().getLightRenderer().addLight(pointLightData);
         activePointLights.add(pointLightData);
     }
@@ -199,8 +202,10 @@ public class LightManager {
 
     public static void addDirectionalLight(float r, float g, float b, float x, float y, float z, float brightness) {
 
-
-        DirectionalLightData directionalLightData = (DirectionalLightData) new DirectionalLightData().setDirection(x ,y ,z).setColor(r, g ,b).setBrightness(brightness);
+        DirectionalLightData directionalLightData = new DirectionalLightData()
+                .setDirection(x ,y ,z)
+                .setColor(r, g ,b)
+                .setBrightness(brightness);
 
         VeilRenderSystem.renderer().getLightRenderer().addLight(directionalLightData);
         activeDirectionalLights.add(directionalLightData);
@@ -289,18 +294,24 @@ public class LightManager {
 
     // ────────────────── Sync Light From Veil Renderer ──────────────────
 
-//    public static void syncLightsFromVeil() {
-//        var lightRenderer = VeilRenderSystem.renderer().getLightRenderer();
-//        if (lightRenderer == null) return;
-//
-//        // Clear existing tracked lights
-//        activePointLights.clear();
-//        activeAreaLights.clear();
-//        activeDirectionalLights.clear();
-//
-//        // Add all current lights from Veil
-//        activePointLights.addAll(lightRenderer.getLights(LightTypeRegistry.POINT.get()));
-//        activeAreaLights.addAll(lightRenderer.getLights(LightTypeRegistry.AREA.get()));
-//        activeDirectionalLights.addAll(lightRenderer.getLights(LightTypeRegistry.DIRECTIONAL.get()));
-//    }
+    public static void syncLightsFromVeil() {
+        var lightRenderer = VeilRenderSystem.renderer().getLightRenderer();
+        if (lightRenderer == null) return;
+
+        // Clear existing tracked lights
+        activePointLights.clear();
+        activeAreaLights.clear();
+        activeDirectionalLights.clear();
+
+        // Add all current lights from Veil
+        for (var handle : lightRenderer.getLights(LightTypeRegistry.POINT.get())) {
+            activePointLights.add(handle.getLightData());
+        }
+        for (var handle : lightRenderer.getLights(LightTypeRegistry.AREA.get())) {
+            activeAreaLights.add(handle.getLightData());
+        }
+        for (var handle : lightRenderer.getLights(LightTypeRegistry.DIRECTIONAL.get())) {
+            activeDirectionalLights.add(handle.getLightData());
+        }
+    }
 }

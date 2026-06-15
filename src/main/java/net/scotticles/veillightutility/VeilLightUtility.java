@@ -2,6 +2,7 @@ package net.scotticles.veillightutility;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.scotticles.veillightutility.settings.VeilLightUtilityConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +20,7 @@ public class VeilLightUtility implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
+		VeilLightUtilityConfig.load();
 		LOGGER.info("Hello VLU users!");
 	}
 }

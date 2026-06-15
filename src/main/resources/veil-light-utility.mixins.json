@@ -3,7 +3,8 @@
 	"package": "net.scotticles.veillightutility.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"OptionsScreenMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

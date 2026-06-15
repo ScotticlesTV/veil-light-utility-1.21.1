@@ -6,6 +6,7 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import net.scotticles.veillightutility.light.LightManager;
+import net.scotticles.veillightutility.ui.ConfigScreen;
 import net.scotticles.veillightutility.ui.LightEditor;
 import net.scotticles.veillightutility.ui.QuickHud;
 import org.lwjgl.glfw.GLFW;
@@ -21,7 +22,8 @@ public class KeyInputHandler {
 
 
     public static final String QUICK_HUD_KEY = "key.veil-light-utility.quick-hud_key";
-    public static final String LIGHT_EDITOR_KEY = "key.veil-light-utility.light-editor_key";
+//    public static final String LIGHT_EDITOR_KEY = "key.veil-light-utility.light-editor_key";
+    public static final String CONFIG_SCREEN_KEY = "key.veil-light-utility.config-screen_key";
 
 //    public static final String SYNC_LIGHTS_KEY = "key.veil-light-utility.sync_lights_key";
 
@@ -35,7 +37,7 @@ public class KeyInputHandler {
 
     public static KeyBinding quickHudKey;
 
-    public static KeyBinding lightEditorKey;
+//    public static KeyBinding lightEditorKey;
 
 //    public static KeyBinding syncLightsKey;
 
@@ -65,9 +67,12 @@ public class KeyInputHandler {
 
             quickHudWasDown = isDown;
 
-            if (lightEditorKey.wasPressed()) {
-                minecraftClient.setScreen(new LightEditor());
-            }
+
+//            if (lightEditorKey.wasPressed()) {
+//                minecraftClient.setScreen(new LightEditor());
+//            }
+
+
 
 //            if (syncLightsKey.wasPressed()) {
 //                LightManager.syncLightsFromVeil();
@@ -137,10 +142,11 @@ public class KeyInputHandler {
                 InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_LEFT_ALT,
                 KEY_CATEGORY_VEILLIGHTUTILITY));
 
-        lightEditorKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                LIGHT_EDITOR_KEY,
-                InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_K,
-                KEY_CATEGORY_VEILLIGHTUTILITY));
+
+//        lightEditorKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+//                LIGHT_EDITOR_KEY,
+//                InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_K,
+//                KEY_CATEGORY_VEILLIGHTUTILITY));
 
 //        syncLightsKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 //                SYNC_LIGHTS_KEY,
