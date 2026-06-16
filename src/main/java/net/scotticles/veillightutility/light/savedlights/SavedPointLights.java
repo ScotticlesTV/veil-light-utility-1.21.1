@@ -8,6 +8,12 @@ import org.joml.Vector3dc;
 import java.awt.*;
 
 public class SavedPointLights {
+    //Needed Attributes
+    //Brightness
+    //Color
+    //Position
+    //Radius
+    //Occluded
     public float brightness;
     public float r, g ,b;
     public double x, y ,z;

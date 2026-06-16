@@ -5,6 +5,10 @@ import foundry.veil.api.client.render.light.data.DirectionalLightData;
 import org.joml.Vector3fc;
 
 public class SavedDirectionalLights {
+    //Needed Attributes
+    //Brightness
+    //Color
+    //Direction
     public float brightness;
     public float r, g ,b;
     public float x, y ,z;

@@ -1,19 +1,10 @@
 package net.scotticles.veillightutility.ui;
 
-import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextWidget;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.Vec3d;
-import net.scotticles.veillightutility.event.KeyInputHandler;
-import net.scotticles.veillightutility.light.LightManager;
 import net.scotticles.veillightutility.settings.VeilLightUtilityConfig;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-import static org.lwjgl.system.linux.X11.True;
 
 
 public class ConfigScreen extends Screen {

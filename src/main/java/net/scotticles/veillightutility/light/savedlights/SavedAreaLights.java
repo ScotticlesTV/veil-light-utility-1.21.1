@@ -10,9 +10,10 @@ public class SavedAreaLights {
     //Color
     //Size
     //Position
-    //Orientation
     //Angle
     //Distance
+    //Orientation
+    //Occluded
     public float brightness;
     public float r, g ,b;
     public float width, height;
