@@ -13,4 +13,4 @@
 - Multiplayer Support
 
 # Documentation
-Full documention of how to use VLU can be found in the [Wiki](https://github.com/ScotticlesTV/veil-light-utility-1.21.1/wiki)
+Full documentation of how to use VLU can be found in the [Wiki](https://github.com/ScotticlesTV/veil-light-utility-1.21.1/wiki)
