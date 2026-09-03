@@ -3,6 +3,11 @@
 <div align="center"><p>A lighting tool for Minecraft fabric 1.21.1</p></div>
 
 # Current Features:
+
+
+![Modrinth Downloads](https://img.shields.io/modrinth/dt/veil-light-utility?logo=modrinth&color=%2300AF5C&link=https%3A%2F%2Fmodrinth.com%2Fmod%2Fveil-light-utility)
+![CurseForge Downloads](https://img.shields.io/curseforge/dt/1679799?logo=curseforge&color=%23F16436&link=https%3A%2F%2Fwww.curseforge.com%2Fminecraft%2Fmc-mods%2Fveil-light-utility%2Fpreview)
+
 - Saving Lights (W/ Saving Method Options)
 - Loading Lights
 - Quick Hud
